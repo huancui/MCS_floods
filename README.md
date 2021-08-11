@@ -11,13 +11,24 @@ This script collects the information (e.g. timing, location, duration) of each f
 | A	| StormEvents_details-ftp_v1.0_dyyyy_c*.csv | details and descriptions of each Storm Event |
 | B | StormEvents_locations-ftp_v1.0_dyyyy_c*.csv | locations of each Storm Event |
 
-(*yyyy indicate each year. The Storm Event database can be downloaded from ftp://ftp.ncdc.noaa.gov/pub/data/swdi/stormevents/csvfiles/)
+(*yyyy indicates each year. The Storm Event database can be downloaded from ftp://ftp.ncdc.noaa.gov/pub/data/swdi/stormevents/csvfiles/)
 
 ### Output files:
+|  | File names | Description |
+| ------ | ------ | ------ |
+| A	| StormEvent_episodes_mmm_yyyy.csv | list of flood episodes in each month|
+| B | StormEvent_episodes_floods_lat_mmm_yyyy.csv | latitudes of each flood event (columns) belonging to each flood episode (rows) |
+| C | StormEvent_episodes_floods_lon_mmm_yyyy.csv | longitudes of each flood event (columns) belonging to each flood episode (rows) |
+| D | StormEvent_episodes_floods_time1_mmm_yyyy.csv | starting times of each flood event (columns) belonging to each flood episode (rows) |
+| E | StormEvent_episodes_floods_time2_mmm_yyyy.csv | ending times of each flood event (columns) belonging to each flood episode (rows) |
+| F | StormEvent_episodes_floods_type_mmm_yyyy.csv | flood types of each flood event (columns) belonging to each flood episode (rows): 1->slow-rising flood, 2->flash flood |
+
+(*mmm indicates different months from April to August, yyyy indicates different years from 2007-2017)
 
 ## 2. Obtain_StormEvent_Episode_MCS.py
 This script attributes flood episodes collected by the above "Obtain_StormEvent_Episode_info.py" script to MCS events from the [high-resolution(4km) MCS dataset](https://doi.org/10.5439/1571643). 
 ### Input files:
+
 ### Output files:
 
 ## 3. Obtain_StormEvent_Episode_nonMCS.py
