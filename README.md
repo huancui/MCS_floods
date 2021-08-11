@@ -9,7 +9,7 @@ Reference: [Hu.H, Feng.Z and L.R.Leung (2021): Linking Flood Frequency with Meso
 - [2. Obtain_StormEvent_Episode_MCS.py](#Obtain_StormEvent_Episode_MCS.py)
 - [3. Obtain_StormEvent_Episode_nonMCS.py](#Obtain_StormEvent_Episode_nonMCS.py)
 
-### 1. btain_StormEvent_Episode_info.py
+### 1. Obtain_StormEvent_Episode_info.py
 This script collects the information (e.g. timing, location, duration) of each flood episode, which might consist of multiple flood events, as a preperation for the following analysis to be linked with MCS or non-MCS storms. Note that floods in April-August 2007-2017 are of our interest. 
 #### Input files:
 |  | File names | Description |
