@@ -79,30 +79,6 @@ def find_stageiv_ij(lat_i, lon_i):
 
 monthstr = ['apr','may','jun','jul','aug']
 
-#-----read in MCS cluster files-----
-filenamec2 = path6 + 'MCS_clusters_datetime_all_list.dat'
-MCScluster_datetime_list = []
-f0       = open(filenamec2, 'r')
-for line in f0.readlines():
-    line1 = line.strip()
-    list  = []
-    for num in line1.split(','):
-        list.append(num)
-    MCScluster_datetime_list.append(list)
-f0.close()
-#------------------------------------
-filenamec3 = path6 + 'MCS_clusters_track_list.dat'
-MCScluster_track_list = []
-f0        = open(filenamec3, 'r')
-for line in f0.readlines():
-    line1 = line.strip()
-    list  = []
-    for num in line1.split(','):
-        list.append(float(num))
-    MCScluster_track_list.append(list)
-f0.close()
-
-
 for iyear in range(year1, year2):
     #----read in MCS time file first----
     filenamem2        = path5 + 'MCS_datetime_all_list_' + str(iyear) +'.dat'
@@ -220,47 +196,6 @@ for iyear in range(year1, year2):
                     episode_flags[iepi,0]                     = 1
                     type_frequency_month_mcs[int(flood_type-1),j_ind,i_ind] = type_frequency_month_mcs[int(flood_type-1),j_ind,i_ind] +1
                     
-            
-                
-                #=======now check for if this episode is associated with a MCS clusters=====
-                MCScluster_match_list  = []
-                MCScluster_match_index = []
-                #----loop through MCS cluster time step to see if there's overlap----
-                for itime in np.arange(len(time_range)):
-                    for imcs in range(len(MCScluster_datetime_list)):
-                        flag_newmcs = 1
-                        track_imcs  = MCScluster_track_list[imcs]
-                        steps_inmcs = MCScluster_datetime_list[imcs]
-                        for imcs_step in range(len(steps_inmcs)):
-                            if (str(time_range[itime]) == steps_inmcs[imcs_step]):
-                                print('find matching step in MCS cluster:', steps_inmcs[imcs_step])
-                                if (track_imcs not in MCScluster_match_list):
-                                    MCScluster_match_list.append(track_imcs)
-                                    MCScluster_match_index.append(imcs)
-                #-----now should find all the MCS that overlaps flood duration----
-                
-                #-----loop through each MCS, check if the location within the MCS area----
-                mcscluster_flag = 0
-                if (len(MCScluster_match_list) > 0):
-                    for imcs in range(len(MCScluster_match_index)):
-                        print('found MCScluster_match_list: ', MCScluster_match_list[imcs])
-                        #------------------------------------
-                        filename5    = path7 + 'MCS_cluster_'+str(MCScluster_match_index[imcs]).zfill(3)+'_track_pp.nc'
-                        data5        = Dataset(filename5, 'r', format='NETCDF4')       
-                        mcs_tracks2  = data5.variables['mcs_tracks']
-                        
-                        for iflood in range(len(lats)):
-                            j_ind2,i_ind2 = find_stageiv_ij(lats[iflood], lons[iflood])
-                            for istorm in range(mcs_tracks2.shape[0]):
-                                mcs_mask2 = mcs_tracks2[istorm, :, :]
-                                if (mcs_mask2[j_ind2, i_ind2] > 1.5):
-                                    print('Episode within MCS cluster, j,i, MCS[j,i]:', data1[iepi,0], MCScluster_match_list[imcs], j_ind2, i_ind2, mcs_mask2[j_ind2, i_ind2]) 
-                                    mcscluster_flag = 1
-                
-                if (mcscluster_flag > 0.5):
-                    episode_frequency_month_mcscluster[j_ind, i_ind] = episode_frequency_month_mcscluster[j_ind, i_ind] +1
-                    episode_flags[iepi,1]                            = 2
-                    type_frequency_month_mcscluster[int(flood_type-1),j_ind,i_ind] = type_frequency_month_mcscluster[int(flood_type-1),j_ind,i_ind] +1
     
         #-----output files-----
         outfile1   = path3 + 'OUT/Episode_frequency_'+monthstr[imonth]+'_'+str(iyear)+'.nc'
@@ -291,12 +226,6 @@ for iyear in range(year1, year2):
         freqout2.missing_value = -9.99e5
         freqout2[:,:]          = episode_frequency_month_mcs
         
-        freqout3               =  rootgrp.createVariable('episode_frequency_mcscluster','f4',('y','x',))
-        freqout3.longname      = 'frequency of floods in each month'
-        freqout3.units         = '1'
-        freqout3.missing_value = -9.99e5
-        freqout3[:,:]          = episode_frequency_month_mcscluster
-        
         freqout4               =  rootgrp.createVariable('type_frequency','f4',('t','y','x',))
         freqout4.longname      = 'frequency of 3 types floods in each month'
         freqout4.units         = '1'
@@ -308,12 +237,6 @@ for iyear in range(year1, year2):
         freqout5.units         = '1'
         freqout5.missing_value = -9.99e5
         freqout5[:,:,:]        = type_frequency_month_mcs
-        
-        freqout6               =  rootgrp.createVariable('type_frequency_mcscluster','f4',('t','y','x',))
-        freqout6.longname      = 'frequency of 3 types floods in each month'
-        freqout6.units         = '1'
-        freqout6.missing_value = -9.99e5
-        freqout6[:,:,:]        = type_frequency_month_mcscluster
         
         rootgrp.close()
         
