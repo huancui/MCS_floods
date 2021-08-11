@@ -3,13 +3,13 @@ This repository includes the key scripts used by [Hu et al. (2021)](https://agup
 
 Reference: [Hu.H, Feng.Z and L.R.Leung (2021): Linking Flood Frequency with Mesoscale Convective Systems in the US.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2021GL092546)
 
-=====================
+-------------
 ## List of scripts:
-- [1. Obtain_StormEvent_Episode_info.py](#Obtain_stormEvent_Episode_info.py)
+- [Obtain_StormEvent_Episode_info.py](#Obtain_stormEvent_Episode_info.py)
 - [2. Obtain_StormEvent_Episode_MCS.py](#Obtain_StormEvent_Episode_MCS.py)
 - [3. Obtain_StormEvent_Episode_nonMCS.py](#Obtain_StormEvent_Episode_nonMCS.py)
 
-
+-------------
 
 ### Obtain_StormEvent_Episode_info.py
 This script collects the information (e.g. timing, location, duration) of each flood episode, which might consist of multiple flood events, as a preperation for the following analysis to be linked with MCS or non-MCS storms. Note that floods in April-August 2007-2017 are of our interest. 
