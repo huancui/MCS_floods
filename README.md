@@ -7,7 +7,7 @@ Reference: [Hu.H, Feng.Z and L.R.Leung (2021): Linking Flood Frequency with Meso
 This script collects the information (e.g. timing, location, duration) of each flood episode, which might consist of multiple flood events, as a preperation for the following analysis to be linked with MCS or non-MCS storms. Note that floods in April-August 2007-2017 are of our interest. 
 ### Input files:
 |  | File names | Description |
-| ------ | ------ | ------ |
+| -- | ------ | ------ |
 | A	| StormEvents_details-ftp_v1.0_dyyyy_c*.csv | details and descriptions of each Storm Event |
 | B | StormEvents_locations-ftp_v1.0_dyyyy_c*.csv | locations of each Storm Event |
 *yyyy indicate each year. The Storm Event database can be downloaded from ftp://ftp.ncdc.noaa.gov/pub/data/swdi/stormevents/csvfiles/
