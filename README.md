@@ -3,7 +3,9 @@ This repository includes the key scripts used by [Hu et al. (2021)](https://agup
 
 Reference: [Hu.H, Feng.Z and L.R.Leung (2021): Linking Flood Frequency with Mesoscale Convective Systems in the US.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2021GL092546)
 
-- [1. Obtain_StormEvent_Episode_info.py](1. Obtain_StormEvent_Episode_info.py)
+-----
+## List of scripts:
+ - [1. Obtain_StormEvent_Episode_info.py](##1. Obtain_StormEvent_Episode_info.py)
 - 2. Obtain_StormEvent_Episode_MCS.py
 - 3. Obtain_StormEvent_Episode_nonMCS.py
 
