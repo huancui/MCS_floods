@@ -7,13 +7,14 @@ Reference: [Hu.H, Feng.Z and L.R.Leung (2021): Linking Flood Frequency with Meso
 
 ## List of scripts:
 
-- [Obtain_StormEvent_Episode_info.py](#head1234)
-- [2. Obtain_StormEvent_Episode_MCS.py](#Obtain_StormEvent_Episode_MCS.py)
-- [3. Obtain_StormEvent_Episode_nonMCS.py](#Obtain_StormEvent_Episode_nonMCS.py)
+- [1. Obtain_StormEvent_Episode_info.py](#head1)
+- [2. Obtain_StormEvent_Episode_MCS.py](#head2)
+- [3. Obtain_StormEvent_Episode_nonMCS.py](#head3)
+- [Contact us](#head4)
 
 -------------
 
-### <a name="head1234"></a>1. Obtain_StormEvent_Episode_info.py
+### <a name="head1"></a>1. Obtain_StormEvent_Episode_info.py
 
 This script collects the information (e.g. timing, location, duration) of each flood episode, which might consist of multiple flood events, as a preperation for the following analysis to be linked with MCS or non-MCS storms. Note that floods in April-August 2007-2017 are of our interest. 
 #### Input files:
@@ -39,7 +40,7 @@ This script collects the information (e.g. timing, location, duration) of each f
 
 ------
 
-### Obtain_StormEvent_Episode_MCS.py
+### <a name="head2"></a>2. Obtain_StormEvent_Episode_MCS.py
 This script attributes flood episodes collected by the above "Obtain_StormEvent_Episode_info.py" script to MCS events from the [high-resolution(4km) MCS dataset](https://doi.org/10.5439/1571643). 
 #### Input files:
 |  | File names | Description |
@@ -62,7 +63,7 @@ This script attributes flood episodes collected by the above "Obtain_StormEvent_
 
 ------
 
-### Obtain_StormEvent_Episode_nonMCS.py
+### <a name="head3"></a>3. Obtain_StormEvent_Episode_nonMCS.py
 This script attribute flood episodes collected by the above "Obtain_StormEvent_Episode_info.py" script to non-MCS rainfall events.
 #### Input files:
 |  | File names | Description |
@@ -80,5 +81,7 @@ This script attribute flood episodes collected by the above "Obtain_StormEvent_E
 | A	| Episode_frequency_mmm_yyyynonMCS.nc | maps of non-MCS-related flood episode frequency in each month |
 | B | Episode_flags_mmm_yyyynonmcs.csv | list of flags for flood episodes indicating whether a flood is associated with non-MCS storms or not: second column 1->associated with non-MCS rainfall; 0-> not associated with non-MCS rainfall |
 
-
+--------
+### <a name="head4"></a>Contact us:
+Huancui Hu: Huancui.Hu@pnnl.gov
 
